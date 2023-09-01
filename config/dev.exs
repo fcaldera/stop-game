@@ -22,7 +22,8 @@ config :stop, StopWeb.Endpoint,
   debug_errors: true,
   secret_key_base: "mMXqfCHCx0Q6MNPJig9A/Qv6exgOORTNc+098NisvYxcocalPRNurW6n4XKDqmdq",
   watchers: [
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
+    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
+    react: {Esbuild, :install_and_run, [:react, ~w(--sourcemap=inline --watch)]}
   ]
 
 # ## SSL Support

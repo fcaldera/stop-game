@@ -62,8 +62,8 @@ defmodule Stop.MixProject do
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       "assets.setup": ["esbuild.install --if-missing"],
-      "assets.build": ["esbuild default"],
-      "assets.deploy": ["esbuild default --minify", "phx.digest"]
+      "assets.build": ["esbuild default", "esbuild react"],
+      "assets.deploy": ["esbuild default --minify", "esbuild react --minify", "phx.digest"]
     ]
   end
 end

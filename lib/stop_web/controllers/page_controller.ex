@@ -6,4 +6,8 @@ defmodule StopWeb.PageController do
     # so skip the default app layout.
     render(conn, :home, layout: false)
   end
+
+  def react(conn, _params) do
+    render(conn, :react, layout: false)
+  end
 end

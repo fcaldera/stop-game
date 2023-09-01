@@ -18,6 +18,7 @@ defmodule StopWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    get "/react", PageController, :react
   end
 
   # Other scopes may use custom stacks.
