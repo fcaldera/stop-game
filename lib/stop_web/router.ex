@@ -8,6 +8,7 @@ defmodule StopWeb.Router do
     plug :put_root_layout, html: {StopWeb.Layouts, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug :fetch_current_player
   end
 
   pipeline :api do
@@ -39,6 +40,20 @@ defmodule StopWeb.Router do
       pipe_through :browser
 
       live_dashboard "/dashboard", metrics: StopWeb.Telemetry
+    end
+  end
+
+  defp fetch_current_player(conn, _) do
+    if player = get_session(conn, :current_player) do
+      IO.inspect(player, label: "Current player")
+      assign(conn, :current_player, player)
+    else
+      new_uuid = Ecto.UUID.generate()
+      IO.inspect(new_uuid, label: "New player")
+
+      conn
+      |> assign(:current_player, new_uuid)
+      |> put_session(:current_player, new_uuid)
     end
   end
 end
