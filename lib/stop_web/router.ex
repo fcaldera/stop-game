@@ -23,9 +23,11 @@ defmodule StopWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", StopWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", StopWeb do
+    pipe_through :api
+
+    resources "/games", GameController, except: [:new, :edit]
+  end
 
   # Enable LiveDashboard in development
   if Application.compile_env(:stop, :dev_routes) do
