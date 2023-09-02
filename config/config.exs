@@ -30,7 +30,7 @@ config :esbuild,
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
   ],
   react: [
-    args: ~w(react/main.jsx --bundle --target=es2017 --outdir=../priv/static/assets/react),
+    args: ~w(react/src/main.jsx --bundle --target=es2017 --outdir=../priv/static/assets/react),
     cd: Path.expand("../assets", __DIR__),
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
   ]
