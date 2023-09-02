@@ -47,11 +47,9 @@ defmodule StopWeb.Router do
 
   defp fetch_current_player(conn, _) do
     if player = get_session(conn, :current_player) do
-      IO.inspect(player, label: "Current player")
       assign(conn, :current_player, player)
     else
       new_uuid = Ecto.UUID.generate()
-      IO.inspect(new_uuid, label: "New player")
 
       conn
       |> assign(:current_player, new_uuid)

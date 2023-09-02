@@ -1,6 +1,8 @@
 defmodule StopWeb.GameJSON do
   alias Stop.Games.Game
 
+  @hasher Hashids.new(salt: "sg2023", min_len: 5)
+
   @doc """
   Renders a list of games.
   """
@@ -16,15 +18,9 @@ defmodule StopWeb.GameJSON do
   end
 
   defp data(%Game{} = game) do
-    s =
-      Hashids.new(
-        salt: "sg2023",
-        min_len: 5
-      )
-
     %{
       id: game.id,
-      code: Hashids.encode(s, game.id),
+      code: Hashids.encode(@hasher, game.id),
       max_rounds: game.max_rounds
     }
   end
