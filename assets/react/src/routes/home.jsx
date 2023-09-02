@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function App() {
+export default function Home() {
   const handleNewGameClick = async () => {
     const response = await fetch("/api/games", {
       method: "POST",
@@ -13,11 +13,8 @@ export default function App() {
   };
 
   return (
-    <main>
-      <h1>Stop Game!</h1>
-      <div>
-        <button onClick={handleNewGameClick}>New Game</button>
-      </div>
-    </main>
+    <div>
+      <button onClick={handleNewGameClick}>New Game</button>
+    </div>
   );
 }
