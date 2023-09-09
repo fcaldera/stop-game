@@ -14,6 +14,5 @@ defmodule Stop.Games.Game do
     game
     |> cast(attrs, [:max_rounds])
     |> validate_required([:max_rounds])
-    |> unique_constraint(:code)
   end
 end

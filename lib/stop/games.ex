@@ -8,6 +8,8 @@ defmodule Stop.Games do
 
   alias Stop.Games.Game
 
+  @hasher Hashids.new(salt: "sg2023", min_len: 5)
+
   @doc """
   Returns the list of games.
 
@@ -100,5 +102,16 @@ defmodule Stop.Games do
   """
   def change_game(%Game{} = game, attrs \\ %{}) do
     Game.changeset(game, attrs)
+  end
+
+  def generate_game() do
+    create_game()
+    |> attach_code()
+    |> Repo.update()
+  end
+
+  defp attach_code({:ok, %Game{} = game}) do
+    attrs = %{code: Hashids.encode(@hasher, game.id)}
+    Ecto.Changeset.cast(game, attrs, [:code])
   end
 end
