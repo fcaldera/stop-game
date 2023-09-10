@@ -39,6 +39,10 @@ defmodule Stop.Games do
   """
   def get_game!(id), do: Repo.get!(Game, id)
 
+  def get_game_by_code!(code) do
+    Repo.get_by!(Game, code: code)
+  end
+
   @doc """
   Creates a game.
 
@@ -111,7 +115,6 @@ defmodule Stop.Games do
   end
 
   defp attach_code({:ok, %Game{} = game}) do
-    attrs = %{code: Hashids.encode(@hasher, game.id)}
-    Ecto.Changeset.cast(game, attrs, [:code])
+    Ecto.Changeset.change(game, %{code: Hashids.encode(@hasher, game.id)})
   end
 end

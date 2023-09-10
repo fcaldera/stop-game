@@ -17,8 +17,7 @@ defmodule StopWeb.GameJSON do
 
   defp data(%Game{} = game) do
     %{
-      id: game.id,
-      code: game.code,
+      id: game.code,
       max_rounds: game.max_rounds
     }
   end
