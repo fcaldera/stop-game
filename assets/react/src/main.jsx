@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import Root from "./routes/root";
 import Home from "./routes/home";
-import Game from "./routes/game";
+import Game, { loader as gameLoader } from "./routes/game";
 import ErrorPage from "./error-page";
 import { createGame, getGame } from "./api";
 
@@ -17,10 +17,7 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
-      {
-        path: "",
-        element: <Home />,
-      },
+      { index: true, element: <Home /> },
       {
         path: "games/new",
         action: async () => {
@@ -38,18 +35,7 @@ const router = createBrowserRouter([
       {
         path: "games/:id",
         element: <Game />,
-        loader: async ({ params }) => {
-          const game = await getGame(params.id);
-
-          if (!game) {
-            throw new Response("", {
-              status: 404,
-              statusText: "Game Not Found",
-            });
-          }
-
-          return game;
-        },
+        loader: gameLoader,
       },
     ],
   },
