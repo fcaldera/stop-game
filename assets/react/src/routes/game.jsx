@@ -1,6 +1,21 @@
 import React from "react";
-import { useLoaderData, useParams } from "react-router-dom";
-import { createGame, getGame } from "../api";
+import { Form, useLoaderData, redirect } from "react-router-dom";
+import { getGame, joinGame } from "../api";
+
+export default function Game() {
+  const { game } = useLoaderData();
+
+  return (
+    <div>
+      <Form method="post">
+        <h2>
+          <code>{game.id}</code>
+        </h2>
+        <button type="submit">Join</button>
+      </Form>
+    </div>
+  );
+}
 
 export async function loader({ params }) {
   const game = await getGame(params.id);
@@ -15,15 +30,7 @@ export async function loader({ params }) {
   return { game };
 }
 
-export default function Game() {
-  const { game } = useLoaderData();
-
-  return (
-    <div>
-      <h2>
-        <code>{game.id}</code>
-      </h2>
-      <button>Join</button>
-    </div>
-  );
+export async function action({ params, request }) {
+  const result = await joinGame(params.id);
+  return redirect("room");
 }
