@@ -31,6 +31,7 @@ export async function loader({ params }) {
 }
 
 export async function action({ params, request }) {
-  const result = await joinGame(params.id);
+  //TODO: send the current userId
+  const result = await joinGame(params.id, 1);
   return redirect("room");
 }

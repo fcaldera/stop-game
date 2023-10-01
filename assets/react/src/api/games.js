@@ -1,27 +1,13 @@
-async function getJSON(url) {
-  const res = await fetch(url, {
-    headers: { "Content-Type": "application/json" },
-  });
-
-  if (!res.ok) return null;
-  return (await res.json()).data;
-}
+import { getJSON, postJSON } from "./util";
 
 export async function createGame() {
-  const response = await fetch("/api/games", {
-    method: "POST",
-    headers: {
-      "Content-Type": "applicaiton/json",
-    },
-  });
-  const result = await response.json();
-  return result.data;
+  return postJSON("/api/games", {});
 }
 
 export function getGame(id) {
   return getJSON(`/api/games/${id}`);
 }
 
-export async function joinGame(id) {
-  return { ok: true };
+export async function joinGame(id, userId) {
+  return postJSON(`/api/games/${id}/player`, { userId });
 }
