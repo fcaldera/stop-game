@@ -26,7 +26,9 @@ defmodule StopWeb.Router do
   scope "/api", StopWeb do
     pipe_through :api
 
-    resources "/games", GameController, except: [:new, :edit]
+    resources "/games", GameController, except: [:new, :edit] do
+      resources "/players", PlayerController, except: [:new, :edit, :delete]
+    end
   end
 
   # Enable LiveDashboard in development
