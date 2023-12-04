@@ -20,10 +20,10 @@ config :stop, StopWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "mMXqfCHCx0Q6MNPJig9A/Qv6exgOORTNc+098NisvYxcocalPRNurW6n4XKDqmdq",
+  secret_key_base: "nmrxDOw0fHa9BI/JJmJqkoTokf8sHYSMc4mY/0oz0MSPfFPHz1ynZveqYi/sXW86",
   watchers: [
     esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
-    react: {Esbuild, :install_and_run, [:react, ~w(--sourcemap=inline --watch)]}
+    tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}
   ]
 
 # ## SSL Support

@@ -2,10 +2,8 @@ defmodule StopWeb.PageController do
   use StopWeb, :controller
 
   def home(conn, _params) do
-    redirect(conn, to: ~p"/react")
-  end
-
-  def react(conn, _params) do
-    render(conn, :react, layout: false)
+    # The home page is often custom made,
+    # so skip the default app layout.
+    render(conn, :home, layout: false)
   end
 end

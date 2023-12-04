@@ -14,7 +14,7 @@ config :stop, Stop.Repo,
 # you can enable the server option below.
 config :stop, StopWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "3j50yKKiOi1bjRLblTUhdr6BS8cCTs27Z8fHipEz8BMLKRUxjJoGzUmZeo+f/OhP",
+  secret_key_base: "V3JT8y33qbdWQ+MBIdt/gHpanXCVjgLKmq1d06Xtl8BY/AlewQhofLgy8HJxz6Ir",
   server: false
 
 # Print only warnings and errors during test

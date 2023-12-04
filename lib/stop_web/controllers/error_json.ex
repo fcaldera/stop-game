@@ -5,15 +5,6 @@ defmodule StopWeb.ErrorJSON do
   # def render("500.json", _assigns) do
   #   %{errors: %{detail: "Internal Server Error"}}
   # end
-  #
-  # def render("404.json", _assigns) do
-  #   %{
-  #     "error" => %{
-  #       "code" => 404,
-  #       "msg" => "Not Found"
-  #     }
-  #   }
-  # end
 
   # By default, Phoenix returns the status message from
   # the template name. For example, "404.json" becomes

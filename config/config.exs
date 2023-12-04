@@ -18,7 +18,7 @@ config :stop, StopWeb.Endpoint,
     layout: false
   ],
   pubsub_server: Stop.PubSub,
-  live_view: [signing_salt: "1I+jFns9"]
+  live_view: [signing_salt: "rdJkOPph"]
 
 # Configure esbuild (the version is required)
 config :esbuild,
@@ -28,11 +28,18 @@ config :esbuild,
       ~w(js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
     cd: Path.expand("../assets", __DIR__),
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
-  ],
-  react: [
-    args: ~w(react/src/main.jsx --bundle --target=es2017 --outdir=../priv/static/assets/react),
-    cd: Path.expand("../assets", __DIR__),
-    env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
+  ]
+
+# Configure tailwind (the version is required)
+config :tailwind,
+  version: "3.3.2",
+  default: [
+    args: ~w(
+      --config=tailwind.config.js
+      --input=css/app.css
+      --output=../priv/static/assets/app.css
+    ),
+    cd: Path.expand("../assets", __DIR__)
   ]
 
 # Configures Elixir's Logger

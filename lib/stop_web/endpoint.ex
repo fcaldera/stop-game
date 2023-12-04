@@ -7,9 +7,8 @@ defmodule StopWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_stop_key",
-    signing_salt: "62oaL1gd",
-    same_site: "Lax",
-    max_age: 3 * 365 * 24 * 60 * 60
+    signing_salt: "JdPtdXwF",
+    same_site: "Lax"
   ]
 
   socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
