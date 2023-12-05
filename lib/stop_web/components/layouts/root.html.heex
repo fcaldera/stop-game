@@ -8,6 +8,9 @@
       <%= assigns[:page_title] || "Stop" %>
     </.live_title>
     <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
+    <%= if assigns[:styles] do %>
+      <link phx-track-static rel="stylesheet" href={assigns[:styles]} />
+    <% end %>
     <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
     </script>
   </head>

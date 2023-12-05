@@ -1,0 +1,21 @@
+.home-page {
+
+  .container {
+    width: 300px;
+    margin: 0 auto;
+    display: grid;
+    gap: 20px;
+  }
+
+  form {
+    display: grid;
+    gap: 10px;
+  }
+
+  .divider {
+    color: #888;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+}
